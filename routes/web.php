@@ -15,9 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/search', function() {
-
+Route::post(/**
+ *
+ */ '/search', function() {
     $q = Input::get('q');
-    dd($q);
+    if($q != ' ') {
+       $user = User::where('name', 'LIKE', '%' . $q . '%')
+                        ->orWhere('email', 'LIKE', '%' . $q . '%')
+                        ->get();
+       if(count($user) > 0)
+           return view(welcome)->withDetails($user)
+       ->with('details', $user)->withQuery($q);
+
+    }
+    return view('welcome')->withMessage("No Users Found!");
 
 });

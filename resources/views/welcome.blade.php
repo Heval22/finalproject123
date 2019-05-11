@@ -20,6 +20,29 @@
 				</span>
         </div>
     </form>
+    @if(isset($details))
+        <p>Search results of your query <b> {{ $query }} </b> are: </p>
+        <h1> Sample User Details: </h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($details as $user)
+                <tr>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @elseif(isset($message))
+        <p>{{ $message }}</p>
+
+    @endif
 
 </div>
 </body>
