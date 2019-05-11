@@ -29,6 +29,6 @@ Route::post(/**
        ->with('details', $user)->withQuery($q);
 
     }
-    return view('welcome')->withMessage("No Users Found!");
+    return view('welcome')->withMessage("No Users Found! Please search again.");
 
 });
