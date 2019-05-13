@@ -25,7 +25,7 @@ Route::post(/**
                         ->orWhere('email', 'LIKE', '%' . $q . '%')
                         ->get();
        if(count($user) > 0)
-           return view(welcome)->withDetails($user)
+           return view('welcome')->withDetails($user)
        ->with('details', $user)->withQuery($q);
 
     }
